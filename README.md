@@ -17,7 +17,7 @@ docker run -dt --rm  --name test -p 6080:80 ghcr.io/wongyikben/robotics_arm_proj
 
 ```
 
-Open the VNC by using the following url.
+Open the VNC by using url http://0.0.0.0:6080/
 Click the bottom left corner and select system tool to launch the terminal.
 
 
