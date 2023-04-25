@@ -1,0 +1,95 @@
+/**:
+  ros__parameters:
+    fk_req:
+      frame: "world"
+      fk_link_names: ["ee_link"]
+      joint_state:
+        name:
+          - "shoulder_pan_joint"
+          - "shoulder_lift_joint"
+          - "elbow_joint"
+          - "wrist_1_joint"
+          - "wrist_2_joint"
+          - "wrist_3_joint"
+        position:
+          - 4.57791652967568
+          - -2.8196032566300544
+          - -5.053503323887184
+          - 3.832722926163963
+          - 1.1280170274850356
+          - 2.064828876749861
+
+    ik_req:
+      group_name: "manipulator"
+      avoid_collisions: True
+      joint_state:
+        name:
+          - "shoulder_pan_joint"
+          - "shoulder_lift_joint"
+          - "elbow_joint"
+          - "wrist_1_joint"
+          - "wrist_2_joint"
+          - "wrist_3_joint"
+        position:
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
+      frame: "world"
+      pose:
+        position:
+          x: 0.3
+          y: 0.7
+          z: 0.9
+        orientation:
+          x: 0.5
+          y: 0.5
+          z: 0.0
+          w: 0.70710678118
+      timeout:
+        sec: 5
+        nanosec: 0
+
+    validity_req:
+      group_name: "manipulator"
+      joint_state:
+        name:
+          - "shoulder_pan_joint"
+          - "shoulder_lift_joint"
+          - "elbow_joint"
+          - "wrist_1_joint"
+          - "wrist_2_joint"
+          - "wrist_3_joint"
+        position:
+          - 0.0
+          - -0.40
+          - 0.0
+          - 0.0
+          - 0.0
+          - 0.0
+
+    plan_path_req:
+      group_name: "manipulator"
+      num_planning_attempts: 10000
+      allowed_planning_time: 45.0
+      max_velocity_scaling_factor: 1.0
+      max_acceleration_scaling_factor: 1.0
+      max_cartesian_speed: 1.0
+      tolerance: 0.05
+      joint_state:
+        name:
+          - "shoulder_pan_joint"
+          - "shoulder_lift_joint"
+          - "elbow_joint"
+          - "wrist_1_joint"
+          - "wrist_2_joint"
+          - "wrist_3_joint"
+        position:
+          - 0.0
+          - -1.3285884080413275
+          - 1.2904214424856306
+          - 1.57079632679
+          - 1.57079632679
+          - -1.57079632679
