@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+
+https://github.com/ros-simulation/gazebo_ros_demos/blob/kinetic-devel/rrbot_description/urdf/rrbot.xacro
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ur10">
+
+  <xacro:include filename="$(find cr_description)/urdf/ur10.urdf.xacro" />
+
+  <!-- Include ros2_control parameters -->
+  <xacro:include filename="$(find cr_description)/ros2_control/ur10.ros2_control.xacro" />
+
+  <!-- Used for fixing robot -->
+  <link name="world"/>
+  <gazebo reference="world">
+    <static>true</static>
+  </gazebo>
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.0"/>
+  </joint>
+
+</robot>
