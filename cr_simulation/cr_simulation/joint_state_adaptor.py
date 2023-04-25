@@ -32,7 +32,7 @@ class JointStateAdaptor():
                     f"/model/ur10/joint/{name}/cmd_pos",
                     10)
 
-
+    # Adaptor between the ROS2 topic and ign topic
     def joint_state_cb(self, msg: JointState):
         for i, joint_name in enumerate(msg.name):
             self.joint_pub_dict[joint_name].publish(

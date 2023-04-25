@@ -3,6 +3,7 @@
 namespace cr_planning
 {
 
+// Compute the shorted distance between point c and line segment ab
 float getLineSegment(Eigen::Vector3f a, Eigen::Vector3f b, Eigen::Vector3f c)
 {
   auto u = -(a - c).dot(b - a) / (b - a).norm();
@@ -84,6 +85,7 @@ void PCLFilter::pointCloudCb(std::shared_ptr<PointCloud2> msg)
   pcl::PointCloud<pcl::PointXYZ>::Ptr new_cloud =
     boost::make_shared<pcl::PointCloud<pcl::PointXYZ>>();
 
+  // Transform the pointclound from depth camera frame to world frame
   pcl::transformPointCloud<pcl::PointXYZ>(*cloud, *cloud, eigen_transform);
 
   std::vector<std::string> link_name = {
@@ -106,6 +108,8 @@ void PCLFilter::pointCloudCb(std::shared_ptr<PointCloud2> msg)
       )
     );
   }
+
+  // Filter out points that are too close to the robot, otherwise it will also collide with the point
   for (int i = 0; i < static_cast<int>(cloud->points.size()); i+=10)
   {
     Eigen::Vector3f point_vec(

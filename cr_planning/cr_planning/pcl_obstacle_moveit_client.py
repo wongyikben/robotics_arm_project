@@ -109,6 +109,10 @@ class PCLObstacleMoveitClient():
             self.future_handling()
 
     def point_cloud_cb(self, msg: PointCloud2):
+        """
+        Due to the lack of documentation for MoveIt2 Perception Pipeline configuration,
+        I tried to publish a small sqaure collsion object for each point that the node received.
+        """
         self.point_cloud = msg
         if (self.point_cloud_cb_count % 20 == 0):
             point_array = ros2_numpy.numpify(msg)

@@ -98,7 +98,7 @@ class MoveitDemoClient():
 
     def publish_obstacle(self):
         """
-        Publish CollisionObject msd to collision_object topic to add object
+        Publish CollisionObject msg to collision_object topic to add object
         in planning scene
         """
         for key in self.obstacle_config.keys():
@@ -127,7 +127,7 @@ class MoveitDemoClient():
         """
         Send Forward kinematic computation request to MoveIt server
 
-        Users can request Fk request for different like TF but most of the users
+        Users can request Fk request for different TF but most of the users
         are only interested in endeffector
         """
         req = GetPositionFK.Request()
@@ -191,6 +191,9 @@ class MoveitDemoClient():
         self.validity_future = self.validity_cli.call_async(req)
 
     def send_plan_path_request(self):
+        """
+        Send path planning request to Moveit Server.
+        """
         req = MotionPlanRequest()
 
         req.group_name =\
@@ -231,6 +234,9 @@ class MoveitDemoClient():
             GetMotionPlan.Request(motion_plan_request=req))
 
     def future_handling(self):
+        """
+        Function to handle all the service future in this function.
+        """
         # FK future handling
         if self.fk_future is not None and self.fk_future.done():
             fk_result = self.fk_future.result()
